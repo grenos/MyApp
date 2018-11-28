@@ -15,7 +15,7 @@ class Home extends Component {
         <Button
           onPress={() => navigation.navigate('Cart')}
           title="Cart"
-          color="#fff"
+          color="black"
         />
       )
     };
@@ -24,7 +24,7 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="light-content" backgroundColor="transparent" />
+        {/* <StatusBar barStyle="light-content" backgroundColor="transparent" /> */}
         <Button
           title="Go back"
           onPress={() => this.props.navigation.goBack()}

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, StatusBar } from 'react-native';
 
 import {
   createStackNavigator,
   createAppContainer,
   createBottomTabNavigator,
   StackActions,
-  NavigationActions
+  NavigationActions,
+  SafeAreaView
 } from 'react-navigation';
 
 import Home from './src/screens/Home';
@@ -17,11 +18,14 @@ import Legal from './src/screens/LegaliNote';
 
 class App extends Component {
   static navigationOptions = {
-    title: 'Sign in'
+    header: null
   };
   render() {
     return (
       <View style={styles.container}>
+        <SafeAreaView style={{ backgroundColor: 'transparent' }}>
+          <StatusBar barStyle="dark-content" backgroundColor="transparent" />
+        </SafeAreaView>
         <Text>App screen splash or sign in whatever</Text>
         <Button
           title="Go to Home-Main screen"
@@ -65,9 +69,9 @@ const AppStack = createStackNavigator(
     initialRouteName: 'App',
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: 'black'
+        backgroundColor: 'white'
       },
-      headerTintColor: '#fff',
+      headerTintColor: 'black',
       headerTitleStyle: {
         fontWeight: 'bold'
       }

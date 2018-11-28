@@ -5,8 +5,8 @@ import { SafeAreaView } from 'react-navigation';
 export default () => {
   return (
     <ScrollView>
-      <SafeAreaView style={{ backgroundColor: 'pink' }}>
-        <StatusBar barStyle="dark-content" backgroundColor="transparent" />
+      <SafeAreaView style={{ backgroundColor: 'transparent' }}>
+        {/* <StatusBar barStyle="dark-content" backgroundColor="transparent" /> */}
       </SafeAreaView>
 
       <Text>

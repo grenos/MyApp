@@ -7,11 +7,11 @@ class Details extends Component {
     const { params } = navigation.state;
 
     return {
-      title: params ? params.message : 'fallback message',
-      headerStyle: {
-        backgroundColor: navigationOptions.headerTintColor
-      },
-      headerTintColor: navigationOptions.backgroundColor
+      title: params ? params.message : 'fallback message'
+      // headerStyle: {
+      //   backgroundColor: navigationOptions.headerTintColor
+      // },
+      // headerTintColor: navigationOptions.backgroundColor
     };
   };
 
@@ -23,7 +23,7 @@ class Details extends Component {
     const otherParam = navigation.getParam('message', 'some default value');
     return (
       <View>
-        <StatusBar barStyle="dark-content" backgroundColor="transparent" />
+        {/* <StatusBar barStyle="light-content" backgroundColor="transparent" /> */}
         <Text>This is a detils screen</Text>
         <Text>this is passed as param {itemId}</Text>
         <Text>** also this ** {otherParam}</Text>
