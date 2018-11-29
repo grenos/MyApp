@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, StatusBar, Button } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 
 import PlaceInput from '../components/Input/PlaceInput';
 import List from '../components/list/List';
@@ -41,6 +41,10 @@ class Home extends Component {
               message: 'this is passed as a param'
             })
           }
+        />
+        <Button
+          title="Sliders"
+          onPress={() => this.props.navigation.navigate('Sliders')}
         />
         <PlaceInput />
         <List />

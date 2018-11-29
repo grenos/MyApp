@@ -15,6 +15,7 @@ import Details from './src/screens/Details';
 import Cart from './src/screens/Cart';
 import PlaceModal from './src/screens/PlaceModal';
 import Legal from './src/screens/LegaliNote';
+import Sliders from './src/screens/Sliders';
 
 class App extends Component {
   static navigationOptions = {
@@ -38,10 +39,6 @@ class App extends Component {
             );
           }}
         />
-        {/* <Button
-          title="Go to Home Screen"
-          onPress={() => this.props.navigation.navigate('Home')}
-        /> */}
       </View>
     );
   }
@@ -63,6 +60,9 @@ const AppStack = createStackNavigator(
     },
     Cart: {
       screen: Cart
+    },
+    Sliders: {
+      screen: Sliders
     }
   },
   {
@@ -95,26 +95,27 @@ const CompleteStack = createStackNavigator(
   }
 );
 
-CompleteStack.navigationOptions = ({ navigation }) => {
-  //
-  let tabBarVisible = false;
+// CompleteStack.navigationOptions = ({ navigation }) => {
+//   //
+//   let tabBarVisible = false;
 
-  if (navigation.state.index == 0) {
-    tabBarVisible = true;
-  }
+//   if (navigation.state.index == 0) {
+//     tabBarVisible = true;
+//   }
 
-  return {
-    tabBarVisible
-  };
-};
+//   return {
+//     tabBarVisible
+//   };
+// };
 
-const TabNavigator = createBottomTabNavigator({
-  Main: CompleteStack,
-  Legal: Legal
-});
+// const TabNavigator = createBottomTabNavigator({
+//   Main: CompleteStack,
+//   Legal: Legal
+// });
 
 // tab navigation
-export default (AppContainer = createAppContainer(TabNavigator));
+// export default (AppContainer = createAppContainer(TabNavigator));
+export default (AppContainer = createAppContainer(CompleteStack));
 
 const styles = StyleSheet.create({
   container: {
