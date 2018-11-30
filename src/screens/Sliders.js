@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StatusBar, StyleSheet } from 'react-native';
+import { View, StatusBar, StyleSheet, SafeAreaView } from 'react-native';
 
 import SliderHor from '../components/sliders/SliderHor';
 import SliderVert from '../components/sliders/SliderVert';
