@@ -17,6 +17,7 @@ import PlaceModal from './src/screens/PlaceModal';
 import Legal from './src/screens/LegaliNote';
 import Sliders from './src/screens/Sliders';
 import Slider from './src/screens/Slider';
+import Product from './src/screens/Product';
 
 class App extends Component {
   static navigationOptions = {
@@ -67,6 +68,9 @@ const AppStack = createStackNavigator(
     },
     Slider: {
       screen: Slider
+    },
+    Product: {
+      screen: Product
     }
   },
   {

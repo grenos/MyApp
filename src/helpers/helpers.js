@@ -17,3 +17,11 @@ export function wpH(percentage) {
   const value = (percentage * viewportHeight) / 100;
   return Math.round(value);
 }
+
+SCALE = 375; // constant, 375 is standard width of  iphone 6 / 7 / 8 / 10
+
+export const scaleFontSize = fontSize => {
+  const ratio = fontSize / SCALE; // get ratio based on your standard scale
+  const newSize = Math.round(ratio * viewportWidth);
+  return newSize;
+};
