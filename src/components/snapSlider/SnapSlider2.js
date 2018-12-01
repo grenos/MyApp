@@ -11,12 +11,12 @@ import { wpH, wpW } from '../../helpers/helpers';
 //
 
 const sliderWidth = wpW(100);
-const sliderHeight = wpH(30);
+const sliderHeight = wpH(40);
 
 const itemWidth = sliderWidth;
 const itemHeight = sliderHeight;
 
-export default class SnapSlider extends Component {
+export default class SnapSlider3 extends Component {
   //
 
   _renderItem({ item, index }) {
@@ -39,12 +39,14 @@ export default class SnapSlider extends Component {
           ref={c => {
             this._carousel = c;
           }}
-          data={ENTRIES1}
+          data={ENTRIES2}
           renderItem={this._renderItem}
           sliderWidth={sliderWidth}
           sliderHeight={sliderHeight}
           itemWidth={itemWidth}
+          itemHeight={itemHeight}
           loop={true}
+          vertical={true}
           inactiveSlideScale={1}
         />
       </View>

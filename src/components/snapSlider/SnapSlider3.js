@@ -16,7 +16,7 @@ const sliderHeight = wpH(30);
 const itemWidth = sliderWidth;
 const itemHeight = sliderHeight;
 
-export default class SnapSlider extends Component {
+export default class SnapSlider3 extends Component {
   //
 
   _renderItem({ item, index }) {
