@@ -31,8 +31,7 @@ export default class CollapsingHeaderWithScroll extends Component {
         <View
           style={{
             height: Screen.height / 3,
-            alignItems: 'center',
-            justifyContent: 'flex-end'
+            alignItems: 'center'
           }}
         >
           <ImageBackground
@@ -60,7 +59,9 @@ export default class CollapsingHeaderWithScroll extends Component {
               }}
             >
               <View style={styles.titleContainer}>
-                <Text style={styles.title}>WOMAN</Text>
+                <Text allowFontScaling={true} style={styles.title}>
+                  WOMAN
+                </Text>
               </View>
             </Animated.View>
           </ImageBackground>
@@ -82,7 +83,7 @@ export default class CollapsingHeaderWithScroll extends Component {
               left: 0,
               right: 0,
               height: Screen.height - 100,
-              backgroundColor: '#e0e0e0'
+              backgroundColor: '#fff'
             }}
           >
             <View style={styles.placeholder} />
@@ -114,7 +115,7 @@ export default class CollapsingHeaderWithScroll extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e0e0e0'
+    backgroundColor: '#fff'
   },
   placeholder: {
     backgroundColor: '#65C888',

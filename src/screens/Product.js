@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import ProductComp from '../components/product/ProductComp';
+import ProductsComp from '../components/product/ProductsComp';
 
-export default class Product extends Component {
+export default class Products extends Component {
   static navigationOptions = {
     header: null
   };
   render() {
-    return <ProductComp />;
+    return <ProductsComp />;
   }
 }
