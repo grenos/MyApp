@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import Interactable from 'react-native-interactable';
 import { scaleFontSize } from '../../helpers/helpers';
+import { iOSUIKit } from 'react-native-typography';
 
 const Screen = {
   height: Dimensions.get('window').height,
@@ -60,7 +61,7 @@ export default class CategoryComp extends Component {
             >
               <View style={styles.titleContainer}>
                 <Text allowFontScaling={true} style={styles.title}>
-                  WOMAN
+                  WOMAN 2018
                 </Text>
               </View>
             </Animated.View>
@@ -129,12 +130,14 @@ const styles = StyleSheet.create({
     width: '100%'
   },
   title: {
-    fontSize: scaleFontSize(85),
+    ...iOSUIKit.largeTitleEmphasized,
+    fontSize: scaleFontSize(55),
     fontWeight: 'bold',
-    color: 'red'
+    color: 'red',
+    lineHeight: 60
   },
   titleContainer: {
-    height: Screen.height / 3,
+    height: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center'
   }
