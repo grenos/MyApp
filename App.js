@@ -17,6 +17,7 @@ import PlaceModal from './src/screens/PlaceModal';
 import Legal from './src/screens/LegaliNote';
 import Sliders from './src/screens/Sliders';
 import Slider from './src/screens/Slider';
+import Category from './src/screens/Category';
 import Product from './src/screens/Product';
 
 class App extends Component {
@@ -68,6 +69,9 @@ const AppStack = createStackNavigator(
     },
     Slider: {
       screen: Slider
+    },
+    Category: {
+      screen: Category
     },
     Product: {
       screen: Product

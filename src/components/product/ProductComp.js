@@ -9,14 +9,14 @@ import {
   ImageBackground
 } from 'react-native';
 import Interactable from 'react-native-interactable';
-import { scaleFontSize } from '../../helpers/helpers';
+import SnapSliderProd from '../snapSlider/SnapSliderProd';
 
 const Screen = {
   height: Dimensions.get('window').height,
   width: Dimensions.get('window').width
 };
 
-export default class CollapsingHeaderWithScroll extends Component {
+export default class ProductComp extends Component {
   constructor(props) {
     super(props);
     this._deltaY = new Animated.Value(0);
@@ -30,47 +30,32 @@ export default class CollapsingHeaderWithScroll extends Component {
         {/*  */}
         <View
           style={{
-            height: Screen.height / 3,
+            height: Screen.height / 1.3,
             alignItems: 'center'
           }}
         >
-          <ImageBackground
-            style={styles.image}
-            source={{
-              uri: 'http://unsplash.it/g/360/680?random&gravity=center'
-            }}
-          >
+          <SnapSliderProd>
             <Animated.View
               style={{
                 transform: [
                   {
                     translateY: this._deltaY.interpolate({
                       inputRange: [-150, -150, 0, 0],
-                      outputRange: [-98, -98, 0, 0]
-                    })
-                  },
-                  {
-                    scale: this._deltaY.interpolate({
-                      inputRange: [-150, -150, 0, 0],
-                      outputRange: [0.6, 0.6, 1, 1]
+                      outputRange: [-58, -58, 0, 0]
                     })
                   }
                 ]
               }}
             >
-              <View style={styles.titleContainer}>
-                <Text allowFontScaling={true} style={styles.title}>
-                  WOMAN
-                </Text>
-              </View>
+              <Text>test</Text>
             </Animated.View>
-          </ImageBackground>
+          </SnapSliderProd>
         </View>
 
         <Interactable.View
           verticalOnly={true}
-          snapPoints={[{ y: 0 }, { y: -150, id: 'bottom' }]}
-          boundaries={{ top: -150 }}
+          snapPoints={[{ y: 0 }, { y: -400, id: 'bottom' }]}
+          boundaries={{ top: -450 }}
           onSnap={this.onSnap.bind(this)}
           animatedValueY={this._deltaY}
           showsVerticalScrollIndicator={false}
@@ -127,15 +112,15 @@ const styles = StyleSheet.create({
   image: {
     height: '100%',
     width: '100%'
-  },
-  title: {
-    fontSize: scaleFontSize(85),
-    fontWeight: 'bold',
-    color: 'red'
-  },
-  titleContainer: {
-    height: Screen.height / 3,
-    justifyContent: 'flex-end',
-    alignItems: 'center'
   }
+  // title: {
+  //   fontSize: scaleFontSize(85),
+  //   fontWeight: 'bold',
+  //   color: 'red'
+  // },
+  // titleContainer: {
+  //   height: Screen.height / 2,
+  //   justifyContent: 'flex-end',
+  //   alignItems: 'center'
+  // }
 });

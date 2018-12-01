@@ -6,13 +6,7 @@ import Swiper from 'react-native-swiper';
 export default class SliderHor extends Component {
   render() {
     return (
-      <Swiper
-        style={styles.wrapper}
-        showsButtons={false}
-        showsPagination={false}
-        autoplay={true}
-        scrollEnabled={false}
-      >
+      <Swiper style={styles.wrapper} showsButtons={false}>
         <View style={styles.slide1}>
           <Text style={styles.text}>Hello Swiper</Text>
         </View>

@@ -51,6 +51,10 @@ class Home extends Component {
           onPress={() => this.props.navigation.navigate('Slider')}
         />
         <Button
+          title="Category Page"
+          onPress={() => this.props.navigation.navigate('Category')}
+        />
+        <Button
           title="Product Page"
           onPress={() => this.props.navigation.navigate('Product')}
         />
