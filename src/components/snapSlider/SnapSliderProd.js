@@ -60,20 +60,18 @@ class SnapSliderProd extends Component {
         activeDotIndex={activeSlide}
         containerStyle={{
           backgroundColor: 'transparent',
-          position: 'absolute',
-          paddingVertical: 50
+          position: 'absolute'
         }}
         dotStyle={{
           width: 10,
           height: 10,
           borderRadius: 5,
-          marginHorizontal: 8,
+          marginHorizontal: 0,
           backgroundColor: 'rgba(255, 255, 255, 0.92)'
         }}
         inactiveDotStyle={{}}
         inactiveDotOpacity={0.4}
         inactiveDotScale={0.6}
-        vertical={true}
       />
     );
   }
@@ -101,8 +99,8 @@ class SnapSliderProd extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'flex-start',
-    alignItems: 'flex-end'
+    justifyContent: 'flex-end',
+    alignItems: 'center'
   },
   image: {
     width: itemWidth,

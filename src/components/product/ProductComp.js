@@ -9,13 +9,12 @@ import {
 } from 'react-native';
 import Interactable from 'react-native-interactable';
 import SnapSliderProd from '../snapSlider/SnapSliderProd';
-
 import { connect } from 'react-redux';
 import {
   toggleStateTrue,
   toggleStateFalse
 } from '../../store/actions/actionIndex';
-import store from '../../store/reduxStore';
+import { wpH } from '../../helpers/helpers';
 
 const Screen = {
   height: Dimensions.get('window').height,
@@ -50,6 +49,10 @@ class ProductComp extends Component {
     }
   }
 
+  //! animations **bug**
+  // animated view doesnt respond to speed of swipe
+  // if swipe movement is fast animation jumps to final point
+  // most obvious with transform less with opacity
   render() {
     return (
       <View style={styles.container}>
@@ -57,31 +60,26 @@ class ProductComp extends Component {
         <View
           style={{
             height: Screen.height / 1.3,
-            alignItems: 'center'
+            alignItems: 'center',
+            backgroundColor: '#000'
           }}
         >
-          <SnapSliderProd>
-            <Animated.View
-              style={{
-                transform: [
-                  {
-                    translateY: this._deltaY.interpolate({
-                      inputRange: [-150, -150, 0, 0],
-                      outputRange: [-58, -58, 0, 0]
-                    })
-                  }
-                ]
-              }}
-            >
-              <Text>test</Text>
-            </Animated.View>
-          </SnapSliderProd>
+          <Animated.View
+            style={{
+              opacity: this._deltaY.interpolate({
+                inputRange: [-250, -250, 0, 0],
+                outputRange: [0.5, 0.5, 1, 1]
+              })
+            }}
+          >
+            <SnapSliderProd />
+          </Animated.View>
         </View>
 
         <Interactable.View
           verticalOnly={true}
-          snapPoints={[{ y: 0 }, { y: -400, id: 'bottom' }]}
-          boundaries={{ top: -450 }}
+          snapPoints={[{ y: 0 }, { y: -wpH(55), id: 'bottom', tension: 250 }]}
+          boundaries={{ top: -wpH(55) }}
           onSnap={this.onSnap.bind(this)}
           animatedValueY={this._deltaY}
           showsVerticalScrollIndicator={false}
@@ -140,3 +138,12 @@ export default connect(
   null,
   mapDispatchToProps
 )(ProductComp);
+
+// transform: [
+//   {
+//     translateY: this._deltaY.interpolate({
+//       inputRange: [-150, -150, 0, 0],
+//       outputRange: [-58, -58, 0, 0]
+//     })
+//   }
+// ],

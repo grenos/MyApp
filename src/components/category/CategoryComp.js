@@ -11,7 +11,7 @@ import {
 import Interactable from 'react-native-interactable';
 import { scaleFontSize } from '../../helpers/helpers';
 import { iOSUIKit } from 'react-native-typography';
-
+import { wpH } from '../../helpers/helpers';
 const Screen = {
   height: Dimensions.get('window').height,
   width: Dimensions.get('window').width
@@ -47,13 +47,13 @@ export default class CategoryComp extends Component {
                   {
                     translateY: this._deltaY.interpolate({
                       inputRange: [-150, -150, 0, 0],
-                      outputRange: [-98, -98, 0, 0]
+                      outputRange: [-138, -138, 0, 0]
                     })
                   },
                   {
                     scale: this._deltaY.interpolate({
                       inputRange: [-150, -150, 0, 0],
-                      outputRange: [0.6, 0.6, 1, 1]
+                      outputRange: [0.9, 0.9, 1, 1]
                     })
                   }
                 ]
@@ -61,7 +61,7 @@ export default class CategoryComp extends Component {
             >
               <View style={styles.titleContainer}>
                 <Text allowFontScaling={true} style={styles.title}>
-                  WOMAN 2018
+                  Donna
                 </Text>
               </View>
             </Animated.View>
@@ -70,8 +70,8 @@ export default class CategoryComp extends Component {
 
         <Interactable.View
           verticalOnly={true}
-          snapPoints={[{ y: 0 }, { y: -150, id: 'bottom' }]}
-          boundaries={{ top: -150 }}
+          snapPoints={[{ y: 0 }, { y: -wpH(20), id: 'bottom' }]}
+          boundaries={{ top: -wpH(20) }}
           onSnap={this.onSnap.bind(this)}
           animatedValueY={this._deltaY}
           showsVerticalScrollIndicator={false}
@@ -119,11 +119,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   placeholder: {
-    backgroundColor: '#65C888',
+    backgroundColor: 'white',
     flex: 1,
     height: 120,
     marginHorizontal: 20,
-    marginTop: 20
+    marginTop: 20,
+    borderColor: 'black',
+    borderWidth: 1
   },
   image: {
     height: '100%',
@@ -131,14 +133,14 @@ const styles = StyleSheet.create({
   },
   title: {
     ...iOSUIKit.largeTitleEmphasized,
-    fontSize: scaleFontSize(55),
+    fontSize: 80,
     fontWeight: 'bold',
     color: 'red',
-    lineHeight: 60
+    lineHeight: 85
   },
   titleContainer: {
     height: '100%',
     justifyContent: 'flex-end',
-    alignItems: 'center'
+    alignItems: 'flex-start'
   }
 });
