@@ -19,6 +19,7 @@ import Sliders from './src/screens/Sliders';
 import Slider from './src/screens/Slider';
 import Category from './src/screens/Category';
 import Product from './src/screens/Product';
+import AltParallax from './src/screens/AltParallax';
 
 class App extends Component {
   static navigationOptions = {
@@ -75,6 +76,9 @@ const AppStack = createStackNavigator(
     },
     Product: {
       screen: Product
+    },
+    AltParallax: {
+      screen: AltParallax
     }
   },
   {

@@ -122,7 +122,7 @@ export default class CategoryComp extends Component {
             <FastImage
               style={styles.imagePL}
               source={{
-                uri: 'http://lorempixel.com/g/512/512/fashion',
+                uri: 'http://unsplash.it/512/512?gravity=center',
                 priority: FastImage.priority.normal,
                 cache: FastImage.cacheControl.web
               }}
@@ -130,7 +130,7 @@ export default class CategoryComp extends Component {
             <FastImage
               style={styles.imagePL}
               source={{
-                uri: 'http://lorempixel.com/g/512/512/fashion',
+                uri: 'http://unsplash.it/512/512?gravity=center',
                 priority: FastImage.priority.normal,
                 cache: FastImage.cacheControl.web
               }}

@@ -58,6 +58,10 @@ class Home extends Component {
           title="Product Page"
           onPress={() => this.props.navigation.navigate('Product')}
         />
+        <Button
+          title="Other Parallax"
+          onPress={() => this.props.navigation.navigate('AltParallax')}
+        />
         <PlaceInput />
         <List />
       </View>
