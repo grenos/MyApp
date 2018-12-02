@@ -5,25 +5,51 @@ import {
   Animated,
   ScrollView,
   Dimensions,
-  Text,
-  ImageBackground
+  Text
 } from 'react-native';
 import Interactable from 'react-native-interactable';
 import SnapSliderProd from '../snapSlider/SnapSliderProd';
+
+import { connect } from 'react-redux';
+import {
+  toggleStateTrue,
+  toggleStateFalse
+} from '../../store/actions/actionIndex';
+import store from '../../store/reduxStore';
 
 const Screen = {
   height: Dimensions.get('window').height,
   width: Dimensions.get('window').width
 };
 
-export default class ProductComp extends Component {
+class ProductComp extends Component {
   constructor(props) {
     super(props);
     this._deltaY = new Animated.Value(0);
+
     this.state = {
       canScroll: false
     };
   }
+
+  // dispatch actions here to use on child slider
+  onSnap(event) {
+    const { id } = event.nativeEvent;
+    if (id === 'bottom') {
+      this.setState({ canScroll: true });
+      this.props.sendFalse();
+    } else if (id === null) {
+      this.props.sendTrue();
+    }
+  }
+
+  onScroll(event) {
+    const { contentOffset } = event.nativeEvent;
+    if (contentOffset.y <= 0) {
+      this.setState({ canScroll: false });
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -83,18 +109,6 @@ export default class ProductComp extends Component {
       </View>
     );
   }
-  onSnap(event) {
-    const { id } = event.nativeEvent;
-    if (id === 'bottom') {
-      this.setState({ canScroll: true });
-    }
-  }
-  onScroll(event) {
-    const { contentOffset } = event.nativeEvent;
-    if (contentOffset.y <= 0) {
-      this.setState({ canScroll: false });
-    }
-  }
 }
 
 const styles = StyleSheet.create({
@@ -113,14 +127,16 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%'
   }
-  // title: {
-  //   fontSize: scaleFontSize(85),
-  //   fontWeight: 'bold',
-  //   color: 'red'
-  // },
-  // titleContainer: {
-  //   height: Screen.height / 2,
-  //   justifyContent: 'flex-end',
-  //   alignItems: 'center'
-  // }
 });
+
+const mapDispatchToProps = dispacth => {
+  return {
+    sendTrue: () => dispacth(toggleStateTrue()),
+    sendFalse: () => dispacth(toggleStateFalse())
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ProductComp);

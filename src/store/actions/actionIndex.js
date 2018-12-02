@@ -1,1 +1,9 @@
-export { addPlace, deletePlace, selectPlace, deselectPlace } from './actions';
+export {
+  addPlace,
+  deletePlace,
+  selectPlace,
+  deselectPlace,
+  toggleState,
+  toggleStateTrue,
+  toggleStateFalse
+} from './actions';

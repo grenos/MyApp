@@ -2,7 +2,10 @@ import {
   ADD_PLACE,
   DELETE_PLACE,
   SELECT_PLACE,
-  DESELECT_PLACE
+  DESELECT_PLACE,
+  TOGGLE_FALSE,
+  TOGGLE_TRUE,
+  TOGGLE_STATE
 } from './actiopnTypes';
 
 export const addPlace = placeName => {
@@ -30,3 +33,15 @@ export const deselectPlace = () => {
     type: DESELECT_PLACE
   };
 };
+
+export const toggleState = () => ({
+  type: TOGGLE_STATE
+});
+
+export const toggleStateTrue = () => ({
+  type: TOGGLE_TRUE
+});
+
+export const toggleStateFalse = () => ({
+  type: TOGGLE_FALSE
+});

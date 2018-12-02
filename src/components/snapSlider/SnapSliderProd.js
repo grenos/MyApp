@@ -10,6 +10,8 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { ENTRIES1 } from '../../assets/data/entries';
 import { wpW } from '../../helpers/helpers';
 
+import { connect } from 'react-redux';
+
 // const slideHeight = viewportHeight * 0.36;
 // const sliderWidth = viewportWidth;
 // const itemWidth = slideWidth + itemHorizontalMargin * 2;
@@ -27,12 +29,15 @@ const sliderHeight = Screen.height / 1.3;
 const itemWidth = sliderWidth;
 // const itemHeight = Screen.height / 1.3;
 
-export default class SnapSliderProd extends Component {
+class SnapSliderProd extends Component {
   //
+  constructor(props) {
+    super(props);
 
-  state = {
-    activeSlide: 0
-  };
+    this.state = {
+      activeSlide: 0
+    };
+  }
 
   _renderItem({ item, index }) {
     return (
@@ -74,9 +79,12 @@ export default class SnapSliderProd extends Component {
   }
 
   render() {
+    const { toggle } = this.props;
+
     return (
       <View style={styles.container}>
         <Carousel
+          scrollEnabled={toggle}
           data={ENTRIES1}
           renderItem={this._renderItem}
           sliderWidth={sliderWidth}
@@ -98,6 +106,18 @@ const styles = StyleSheet.create({
   },
   image: {
     width: itemWidth,
-    height: Screen.height / 1.3
+    height: Screen.height / 1.3,
+    opacity: 1
   }
 });
+
+const mapStateToProps = state => {
+  return {
+    toggle: state.placesReducer.toggle
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(SnapSliderProd);

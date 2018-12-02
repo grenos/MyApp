@@ -2,13 +2,17 @@ import {
   ADD_PLACE,
   DELETE_PLACE,
   SELECT_PLACE,
-  DESELECT_PLACE
+  DESELECT_PLACE,
+  TOGGLE_FALSE,
+  TOGGLE_TRUE,
+  TOGGLE_STATE
 } from '../actions/actiopnTypes';
 
 const initState = {
   placeName: '',
   places: [],
-  selectedPlace: null
+  selectedPlace: null,
+  toggle: true
 };
 
 const reducer = (state = initState, action) => {
@@ -52,6 +56,21 @@ const reducer = (state = initState, action) => {
       return {
         ...state,
         selectedPlace: null
+      };
+    case TOGGLE_STATE:
+      return {
+        ...state,
+        toggle: !state.toggle
+      };
+    case TOGGLE_TRUE:
+      return {
+        ...state,
+        toggle: true
+      };
+    case TOGGLE_FALSE:
+      return {
+        ...state,
+        toggle: false
       };
     default:
       return state;
