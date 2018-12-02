@@ -1,51 +1,96 @@
-/*
- * This example demonstrates how to use ParallaxScrollView within a ScrollView component.
- */
 import React, { Component } from 'react';
 import {
   Dimensions,
   Image,
-  ListView,
-  PixelRatio,
+  FlatList,
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
+import FastImage from 'react-native-fast-image';
+import { wpH } from '../../helpers/helpers';
+import SliderHor from '../sliders/SliderHor';
 
 class AltParallaxView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (r1, r2) => r1 !== r2
-      }).cloneWithRows([
-        'Simplicity Matters',
-        'Hammock Driven Development',
-        'Value of Values',
-        'Are We There Yet?',
-        'The Language of the System',
-        'Design, Composition, and Performance',
-        'Clojure core.async',
-        'The Functional Database',
-        'Deconstructing the Database',
-        'Hammock Driven Development',
-        'Value of Values'
-      ])
+      dataSource: [
+        {
+          key: Math.random().toString(),
+          item: 'Simplicity Matters'
+        },
+        {
+          key: Math.random().toString(),
+          item: 'Hammock Driven Development'
+        },
+        {
+          key: Math.random().toString(),
+          item: 'Value of Values'
+        },
+        {
+          key: Math.random().toString(),
+          item: 'The Language of the System'
+        },
+        {
+          key: Math.random().toString(),
+          item: 'Design, Composition, and Performance'
+        },
+        {
+          key: Math.random().toString(),
+          item: 'Clojure core.async'
+        },
+        {
+          key: Math.random().toString(),
+          item: 'The Functional Database'
+        },
+        {
+          key: Math.random().toString(),
+          item: 'Deconstructing the Database'
+        },
+        {
+          key: Math.random().toString(),
+          item: 'Hammock Driven Development'
+        },
+        {
+          key: Math.random().toString(),
+          item: 'Value of Values'
+        },
+        {
+          key: Math.random().toString(),
+          item: 'The Functional Database'
+        },
+        {
+          key: Math.random().toString(),
+          item: 'Deconstructing the Database'
+        },
+        {
+          key: Math.random().toString(),
+          item: 'Hammock Driven Development'
+        },
+        {
+          key: Math.random().toString(),
+          item: 'Value of Values'
+        }
+      ]
     };
   }
 
   render() {
     const { onScroll = () => {} } = this.props;
     return (
-      <ListView
-        ref="ListView"
+      <FlatList
+        ref={ref => {
+          this.flatListRef = ref;
+        }}
         style={styles.container}
-        dataSource={this.state.dataSource}
-        renderRow={rowData => (
-          <View key={rowData} style={styles.row}>
-            <Text style={styles.rowText}>{rowData}</Text>
+        data={this.state.dataSource}
+        renderItem={info => (
+          <View key={info.item.key} style={styles.row}>
+            <Text style={styles.rowText}>{info.item.item}</Text>
           </View>
         )}
         renderScrollComponent={props => (
@@ -55,26 +100,17 @@ class AltParallaxView extends Component {
             stickyHeaderHeight={STICKY_HEADER_HEIGHT}
             parallaxHeaderHeight={PARALLAX_HEADER_HEIGHT}
             backgroundSpeed={10}
-            renderBackground={() => (
-              <View key="background">
-                {/* background image */}
-                <Image
+            renderForeground={() => (
+              <View key="background" style={styles.imagePL}>
+                {/* <FastImage
+                  style={styles.imagePL}
                   source={{
-                    uri: 'https://i.ytimg.com/vi/P-NZei5ANaQ/maxresdefault.jpg',
-                    width: window.width,
-                    height: PARALLAX_HEADER_HEIGHT
+                    uri: 'http://unsplash.it/512/512?random&gravity=center',
+                    priority: FastImage.priority.normal,
+                    cache: FastImage.cacheControl.web
                   }}
-                />
-                {/* parallax space where image is */}
-                <View
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    width: window.width,
-                    backgroundColor: 'rgba(0,0,0,.4)',
-                    height: PARALLAX_HEADER_HEIGHT
-                  }}
-                />
+                /> */}
+                <SliderHor />
               </View>
             )}
             renderStickyHeader={() => (
@@ -86,7 +122,9 @@ class AltParallaxView extends Component {
               <View key="fixed-header" style={styles.fixedSection}>
                 <Text
                   style={styles.fixedSectionText}
-                  onPress={() => this.refs.ListView.scrollTo({ x: 0, y: 0 })}
+                  onPress={() =>
+                    this.flatListRef.scrollToOffset({ animated: true, y: 0 })
+                  }
                 >
                   Scroll to top
                 </Text>
@@ -101,9 +139,8 @@ class AltParallaxView extends Component {
 
 const window = Dimensions.get('window');
 
-const AVATAR_SIZE = 120;
 const ROW_HEIGHT = 60;
-const PARALLAX_HEADER_HEIGHT = 350;
+const PARALLAX_HEADER_HEIGHT = wpH(70);
 const STICKY_HEADER_HEIGHT = 70;
 
 const styles = StyleSheet.create({
@@ -128,6 +165,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     margin: 10
   },
+  imagePL: {
+    width: window.width,
+    height: PARALLAX_HEADER_HEIGHT
+  },
   fixedSection: {
     position: 'absolute',
     bottom: 10,
@@ -136,26 +177,6 @@ const styles = StyleSheet.create({
   fixedSectionText: {
     color: '#999',
     fontSize: 20
-  },
-  parallaxHeader: {
-    alignItems: 'center',
-    flex: 1,
-    flexDirection: 'column',
-    paddingTop: 100
-  },
-  avatar: {
-    marginBottom: 10,
-    borderRadius: AVATAR_SIZE / 2
-  },
-  sectionSpeakerText: {
-    color: 'white',
-    fontSize: 24,
-    paddingVertical: 5
-  },
-  sectionTitleText: {
-    color: 'white',
-    fontSize: 18,
-    paddingVertical: 5
   },
   row: {
     overflow: 'hidden',
@@ -190,5 +211,21 @@ export default AltParallaxView;
 //     <Text style={styles.sectionTitleText}>
 //       CTO of Cognitec, Creator of Clojure
 //     </Text>
+//   </View>
+// )}
+
+// {/* <View
+//                 style={{
+//                   position: 'absolute',
+//                   top: 0,
+//                   width: window.width,
+//                   backgroundColor: 'rgba(0,0,0,.4)',
+//                   height: PARALLAX_HEADER_HEIGHT
+//                 }}
+//               /> */}
+
+// renderBackground={() => (
+//   <View key="background" style={styles.imagePL}>
+//     <SliderHor />
 //   </View>
 // )}
