@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
-import {
-  Dimensions,
-  Image,
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-  Button
-} from 'react-native';
+import { Dimensions, FlatList, StyleSheet, Text, View } from 'react-native';
 
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import FastImage from 'react-native-fast-image';
 import { wpH } from '../../helpers/helpers';
 import SliderHor from '../sliders/SliderHor';
 
-class AltParallaxView extends Component {
+class AltParallaxScrollView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -162,7 +153,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AltParallaxView;
+export default AltParallaxScrollView;
 
 //! original foreground render
 // renderForeground={() => (
