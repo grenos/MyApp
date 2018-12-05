@@ -13,6 +13,7 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import FastImage from 'react-native-fast-image';
 import { wpH } from '../../helpers/helpers';
 import SliderHor from '../sliders/SliderHor';
+import { ScrollView } from 'react-native-gesture-handler';
 
 class AltParallaxView extends Component {
   constructor(props) {
@@ -87,10 +88,12 @@ class AltParallaxView extends Component {
         data={this.state.dataSource}
         renderItem={info => (
           <View key={info.item.key} style={styles.row}>
+            {/* <ScrollView nestedScrollEnabled={true}> */}
             <Text style={styles.rowText}>{info.item.item}</Text>
+            {/* </ScrollView> */}
           </View>
         )}
-        renderScrollComponent={props => (
+        renderScrollComponent={() => (
           <ParallaxScrollView
             onScroll={onScroll}
             headerBackgroundColor="#fff"
@@ -117,7 +120,7 @@ class AltParallaxView extends Component {
 const window = Dimensions.get('window');
 
 const ROW_HEIGHT = 60;
-const PARALLAX_HEADER_HEIGHT = wpH(70);
+const PARALLAX_HEADER_HEIGHT = wpH(75);
 const STICKY_HEADER_HEIGHT = 70;
 
 const styles = StyleSheet.create({
@@ -206,5 +209,13 @@ export default AltParallaxView;
 //     >
 //       Scroll to top
 //     </Text>
+//   </View>
+// )}
+
+//! render data from api or state
+// data={this.state.dataSource}
+// renderItem={info => (
+//   <View key={info.item.key} style={styles.row}>
+//     <Text style={styles.rowText}>{info.item.item}</Text>
 //   </View>
 // )}
