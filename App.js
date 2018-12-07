@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button, StatusBar } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 
 import {
   createStackNavigator,
@@ -25,11 +26,18 @@ class App extends Component {
   static navigationOptions = {
     header: null
   };
+
+  componentDidMount() {
+    // do stuff while splash screen is shown
+    // After having done stuff (such as async tasks) hide the splash screen
+    SplashScreen.hide();
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <SafeAreaView style={{ backgroundColor: 'transparent' }}>
-          <StatusBar barStyle="dark-content" backgroundColor="transparent" />
+          <StatusBar barStyle="light-content" backgroundColor="#4f6d7a" />
         </SafeAreaView>
         <Text>App screen splash or sign in whatever</Text>
         <Button
@@ -136,6 +144,8 @@ export default (AppContainer = createAppContainer(CompleteStack));
 const styles = StyleSheet.create({
   container: {
     flex: 1, // stretches across the screen (default direction is column so stretches from top to bottom)
-    justifyContent: 'flex-start' // when direction is column flex-start is top of screen
+    justifyContent: 'flex-start', // when direction is column flex-start is top of screen
+    backgroundColor: '#4F6D7A',
+    color: '#F5FCFF'
   }
 });
