@@ -36,9 +36,8 @@ class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <SafeAreaView style={{ backgroundColor: 'transparent' }}>
-          <StatusBar barStyle="light-content" backgroundColor="#4f6d7a" />
-        </SafeAreaView>
+        <StatusBar barStyle="light-content" backgroundColor="#4f6d7a" />
+        <SafeAreaView style={{ backgroundColor: 'transparent' }} />
         <Text>App screen splash or sign in whatever</Text>
         <Button
           title="Go to Home-Main screen"
